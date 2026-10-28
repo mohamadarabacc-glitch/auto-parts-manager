@@ -94,7 +94,7 @@ Key decisions (all implemented):
 | Shared UI | `src/components/Layout.tsx`, `ui.tsx`, `form.ts`, `PartLinesEditor.tsx` |
 | Screens | `src/pages/`: Dashboard, Inventory + PartForm, Purchases + PurchaseForm, Sales + SaleForm, Repairs + RepairForm, Expenses + ExpenseForm, Reports, Backup |
 | Routes | `src/App.tsx` (`/`, `/inventory`, `/inventory/new`, `/inventory/:id`, same for purchases, sales, repairs, expenses; `/reports`, `/backup`) |
-| PWA icons | `public/icon.svg` (source), `icon-192.png`, `icon-512.png`, `apple-touch-icon.png` |
+| PWA icons | made from the owner's photo (2026-10-28; the original was deleted at their request): `public/icon-192.png`, `icon-512.png`, `apple-touch-icon.png`, `favicon-32.png`; the name under the icon is **Fayad** |
 | Hosting helper | `public/_redirects` (page links work on Netlify) |
 | Preview server config | `.claude/launch.json` (used by Claude's browser check) |
 | Docs | `README.md` (how to launch, test, back up, install on a phone) |
@@ -186,6 +186,7 @@ Problems met:
 | 2026-10-28 | `npx vitest run`, `npm run build`, browser check of /, /purchases/new, /sales month list; Arabic sample file opened in Microsoft Excel (after translating the whole app to Arabic) | **Passed: 9 files, 132 tests**; build OK; pages right to left; Excel sheets open right to left with Arabic names |
 | 2026-10-28 | `npm run build:pages`, push to GitHub, open the live link | **Passed**: site live (HTTP 200), /reports opens in Arabic, service worker and manifest load from /auto-parts-manager/ |
 | 2026-10-28 | `npx vitest run`, `npm run build`, browser check on desktop and phone size, `npm run build:pages` and publish (new look) | **Passed: 9 files, 132 tests**; build OK; new version live on the GitHub link |
+| 2026-10-28 | `npx vitest run`, `npm run build:pages` and publish (new icon from the owner's photo, name Fayad) | **Passed: 9 files, 132 tests**; build OK; live manifest shows name Fayad and the new icons |
 
 Test counts per file: money 49, helpers (quantity, dates) 17, stock 13, reports 7, database actions 9,
 backup 5, app screens 13.

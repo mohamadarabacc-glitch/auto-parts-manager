@@ -12,12 +12,13 @@ export default defineConfig(({ mode }) => ({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icon.svg', 'apple-touch-icon.png'],
+      includeAssets: ['favicon-32.png', 'apple-touch-icon.png'],
       // Keep the font files too, so the app looks the same with no internet.
       workbox: { globPatterns: ['**/*.{js,css,html,woff2}'] },
       manifest: {
-        name: 'إدارة قطع السيارات',
-        short_name: 'قطع السيارات',
+        // The name under the icon on the phone. Inside the app the title stays 'إدارة قطع السيارات'.
+        name: 'Fayad',
+        short_name: 'Fayad',
         description: 'إدارة مخزون قطع الغيار والكاراج',
         lang: 'ar',
         dir: 'rtl',
