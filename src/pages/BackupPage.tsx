@@ -1,6 +1,6 @@
 import { useState, type ChangeEvent } from 'react'
 import { errorText } from '../components/form'
-import { Card, ErrorMessage, PageHeader, primaryButton, secondaryButton } from '../components/ui'
+import { Card, ErrorMessage, Icon, PageHeader, SuccessMessage, primaryButton, secondaryButton } from '../components/ui'
 import { createBackup, getLastBackupDate, readBackup, rememberBackup, restoreBackup } from '../db/backup'
 import { loadAll } from '../db/db'
 import { LOCALE, today } from '../lib/dates'
@@ -64,6 +64,13 @@ export default function BackupPage() {
   return (
     <>
       <PageHeader title="النسخ الاحتياطي" />
+      {/* Results show at the top, so they are seen on a phone without scrolling. */}
+      {(message || error) && (
+        <div className="mb-4 space-y-2">
+          <SuccessMessage message={message} />
+          <ErrorMessage message={error} />
+        </div>
+      )}
       <div className="grid gap-4 lg:grid-cols-2">
         <Card title="حفظ نسخة احتياطية">
           <p className="mb-3 text-sm text-slate-600">
@@ -71,17 +78,19 @@ export default function BackupPage() {
             تغيير الجهاز.
           </p>
           <button type="button" className={primaryButton} onClick={handleExport}>
+            <Icon name="download" className="h-4 w-4" />
             تنزيل ملف النسخة الاحتياطية
           </button>
           <p className="mt-3 text-sm text-slate-500">
             آخر نسخة احتياطية: {lastBackup ? lastBackup.toLocaleString(LOCALE) : 'لا يوجد'}
           </p>
-          <div className="mt-4 border-t border-slate-100 pt-4">
+          <div className="mt-5 border-t border-slate-100 pt-5">
             <p className="mb-3 text-sm text-slate-600">
               لقراءة بياناتك أو مراجعتها، نزّلها كملف Excel: القطع والمبيعات والتصليحات والمشتريات والمصاريف، كل قسم في
               صفحة. هذا الملف للقراءة فقط ولا يمكن الاسترجاع منه.
             </p>
             <button type="button" className={secondaryButton} onClick={handleExcelExport}>
+              <Icon name="sheet" className="h-4 w-4" />
               تنزيل ملف Excel
             </button>
           </div>
@@ -92,14 +101,11 @@ export default function BackupPage() {
             آخر.
           </p>
           <label className={`${secondaryButton} cursor-pointer`}>
+            <Icon name="upload" className="h-4 w-4" />
             اختر ملف النسخة الاحتياطية…
             <input type="file" accept="application/json,.json" className="sr-only" onChange={handleImport} />
           </label>
         </Card>
-      </div>
-      <div className="mt-4 space-y-2">
-        {message && <p className="rounded-md bg-green-50 px-3 py-2 text-sm text-green-800">{message}</p>}
-        <ErrorMessage message={error} />
       </div>
     </>
   )

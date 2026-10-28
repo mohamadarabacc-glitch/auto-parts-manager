@@ -81,7 +81,7 @@ export default function PartLinesEditor({ parts, stock, lines, onChange, priceLa
         return (
           <div
             key={index}
-            className="grid grid-cols-2 gap-3 rounded-md border border-slate-200 p-3 sm:grid-cols-[minmax(0,1fr)_5rem_8rem_7rem_auto] sm:items-end"
+            className="grid grid-cols-2 gap-3 rounded-xl border border-slate-200 bg-slate-50/60 p-3 sm:grid-cols-[minmax(0,1fr)_5rem_8rem_7rem_auto] sm:items-end"
           >
             <Field label="القطعة" className="col-span-2 sm:col-span-1">
               <select className={inputClass} value={line.partId} onChange={(e) => choosePart(index, e.target.value)}>
@@ -116,7 +116,7 @@ export default function PartLinesEditor({ parts, stock, lines, onChange, priceLa
             </div>
             <button
               type="button"
-              className="text-sm text-red-700 hover:underline sm:pb-2"
+              className="rounded-lg px-2 py-1 text-sm text-red-600 transition hover:bg-red-50 hover:text-red-700 sm:mb-1.5"
               onClick={() => onChange(lines.filter((_, i) => i !== index))}
             >
               إزالة

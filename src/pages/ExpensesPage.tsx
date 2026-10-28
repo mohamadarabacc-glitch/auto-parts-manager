@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import MonthPicker from '../components/MonthPicker'
-import { EmptyState, Loading, Money, PageHeader, TableCard, inputClass, numberClass, primaryButton, secondaryButton, tdClass, thClass } from '../components/ui'
+import { EmptyState, Icon, Loading, Money, PageHeader, TableCard, inputClass, numberClass, primaryButton, secondaryButton, rowClass, tdClass, thClass } from '../components/ui'
 import { useAppData } from '../hooks/useAppData'
 import { isInRange, monthRange, newestFirst } from '../lib/dates'
 import { formatMoney, sumMoney } from '../lib/money'
@@ -26,6 +26,7 @@ export default function ExpensesPage() {
     <>
       <PageHeader title="المصاريف">
         <Link to="/expenses/new" className={primaryButton}>
+          <Icon name="plus" className="h-4 w-4" />
           مصروف جديد
         </Link>
       </PageHeader>
@@ -69,7 +70,7 @@ export default function ExpensesPage() {
             <tbody className="divide-y divide-slate-100">
               {expenses.map((expense) => (
                 // The whole row opens the expense (edit, delete); the date link keeps keyboard access.
-                <tr key={expense.id} className="cursor-pointer hover:bg-green-100" onClick={() => navigate(`/expenses/${expense.id}`)}>
+                <tr key={expense.id} className={rowClass} onClick={() => navigate(`/expenses/${expense.id}`)}>
                   <td className={tdClass}>
                     <Link to={`/expenses/${expense.id}`} className="font-medium hover:underline">
                       {expense.date}

@@ -13,13 +13,15 @@ export default defineConfig(({ mode }) => ({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['icon.svg', 'apple-touch-icon.png'],
+      // Keep the font files too, so the app looks the same with no internet.
+      workbox: { globPatterns: ['**/*.{js,css,html,woff2}'] },
       manifest: {
         name: 'إدارة قطع السيارات',
         short_name: 'قطع السيارات',
         description: 'إدارة مخزون قطع الغيار والكاراج',
         lang: 'ar',
         dir: 'rtl',
-        theme_color: '#0f172a',
+        theme_color: '#115e59',
         background_color: '#f1f5f9',
         display: 'standalone',
         start_url: '.',

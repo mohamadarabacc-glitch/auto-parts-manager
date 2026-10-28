@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import MonthPicker from '../components/MonthPicker'
-import { EmptyState, Loading, Money, PageHeader, TableCard, inputClass, numberClass, primaryButton, secondaryButton, tdClass, thClass } from '../components/ui'
+import { EmptyState, Icon, Loading, Money, PageHeader, TableCard, inputClass, numberClass, primaryButton, secondaryButton, rowClass, tdClass, thClass } from '../components/ui'
 import { useAppData } from '../hooks/useAppData'
 import { newestFirst } from '../lib/dates'
 import { linesTotal } from '../lib/reports'
@@ -25,6 +25,7 @@ export default function PurchasesPage() {
     <>
       <PageHeader title="المشتريات">
         <Link to="/purchases/new" className={primaryButton}>
+          <Icon name="plus" className="h-4 w-4" />
           شراء جديد
         </Link>
       </PageHeader>
@@ -68,7 +69,7 @@ export default function PurchasesPage() {
             <tbody className="divide-y divide-slate-100">
               {purchases.map((purchase) => (
                 // The whole row opens the purchase (its parts, edit, delete); the date link keeps keyboard access.
-                <tr key={purchase.id} className="cursor-pointer hover:bg-green-100" onClick={() => navigate(`/purchases/${purchase.id}`)}>
+                <tr key={purchase.id} className={rowClass} onClick={() => navigate(`/purchases/${purchase.id}`)}>
                   <td className={tdClass}>
                     <Link to={`/purchases/${purchase.id}`} className="font-medium hover:underline">
                       {purchase.date}

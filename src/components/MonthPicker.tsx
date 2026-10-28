@@ -42,13 +42,13 @@ export default function MonthPicker({ month, onChange, title }: { month: string;
         <>
           {/* Clicking anywhere outside the list closes it. */}
           <div className="fixed inset-0 z-10" onClick={() => setOpen(false)} />
-          <div className="absolute end-0 z-20 mt-1 w-64 rounded-md border border-slate-200 bg-white p-3 shadow-lg">
+          <div className="absolute end-0 z-20 mt-2 w-72 rounded-2xl border border-slate-200 bg-white p-3 shadow-xl">
             <div className="mb-2 flex items-center justify-between">
-              <button type="button" className="rounded px-2 py-1 hover:bg-slate-100" aria-label="السنة السابقة" onClick={() => setYear(year - 1)}>
+              <button type="button" className="rounded-lg px-2.5 py-1 text-lg leading-none hover:bg-teal-50 hover:text-teal-800" aria-label="السنة السابقة" onClick={() => setYear(year - 1)}>
                 ›
               </button>
               <span className="font-medium tabular-nums">{year}</span>
-              <button type="button" className="rounded px-2 py-1 hover:bg-slate-100" aria-label="السنة التالية" onClick={() => setYear(year + 1)}>
+              <button type="button" className="rounded-lg px-2.5 py-1 text-lg leading-none hover:bg-teal-50 hover:text-teal-800" aria-label="السنة التالية" onClick={() => setYear(year + 1)}>
                 ‹
               </button>
             </div>
@@ -59,7 +59,7 @@ export default function MonthPicker({ month, onChange, title }: { month: string;
                   <button
                     key={name}
                     type="button"
-                    className={`rounded px-1 py-2 text-xs ${picked ? 'bg-slate-900 text-white' : 'hover:bg-green-100'}`}
+                    className={`rounded-lg px-1 py-2 text-xs transition ${picked ? 'bg-teal-700 text-white' : 'hover:bg-teal-50 hover:text-teal-800'}`}
                     onClick={() => pick(index + 1)}
                   >
                     {name}

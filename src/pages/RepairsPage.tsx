@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import MonthPicker from '../components/MonthPicker'
-import { EmptyState, Loading, Money, PageHeader, TableCard, inputClass, numberClass, primaryButton, secondaryButton, tdClass, thClass } from '../components/ui'
+import { EmptyState, Icon, Loading, Money, PageHeader, TableCard, inputClass, numberClass, primaryButton, secondaryButton, rowClass, tdClass, thClass } from '../components/ui'
 import { useAppData } from '../hooks/useAppData'
 import { newestFirst } from '../lib/dates'
 import { repairTotal } from '../lib/reports'
@@ -27,6 +27,7 @@ export default function RepairsPage() {
     <>
       <PageHeader title="التصليحات">
         <Link to="/repairs/new" className={primaryButton}>
+          <Icon name="plus" className="h-4 w-4" />
           تصليح جديد
         </Link>
       </PageHeader>
@@ -73,7 +74,7 @@ export default function RepairsPage() {
                 const cost = data.repairCosts.get(repair.id) ?? 0
                 return (
                   // The whole row opens the repair (its parts, edit, delete); the date link keeps keyboard access.
-                  <tr key={repair.id} className="cursor-pointer hover:bg-green-100" onClick={() => navigate(`/repairs/${repair.id}`)}>
+                  <tr key={repair.id} className={rowClass} onClick={() => navigate(`/repairs/${repair.id}`)}>
                     <td className={tdClass}>
                       <Link to={`/repairs/${repair.id}`} className="font-medium hover:underline">
                         {repair.date}

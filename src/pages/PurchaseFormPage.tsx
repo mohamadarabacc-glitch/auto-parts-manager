@@ -149,7 +149,7 @@ function NewPart({ onAdded }: { onAdded: (partId: number) => void }) {
     )
   }
   return (
-    <div className="mt-3 space-y-3 rounded-md border border-green-300 bg-green-50 p-3">
+    <div className="mt-3 space-y-3 rounded-xl border border-teal-200 bg-teal-50/60 p-4">
       <p className="text-sm font-medium">قطعة جديدة</p>
       <div className="grid gap-3 sm:grid-cols-2">
         <Field label="اسم القطعة الجديدة">
@@ -176,7 +176,7 @@ export function NoPartsYet() {
   return (
     <EmptyState>
       أضف قطعاً إلى المخزون أولاً.{' '}
-      <Link to="/inventory/new" className="font-medium text-slate-900 underline">
+      <Link to="/inventory/new" className="font-medium text-teal-700 underline">
         إضافة قطعة
       </Link>
     </EmptyState>

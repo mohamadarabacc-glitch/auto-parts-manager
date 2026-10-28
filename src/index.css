@@ -1,9 +1,46 @@
 /* Only scan the app's own source files for Tailwind classes (not dist/, docs or node_modules). */
 @import "tailwindcss" source(".");
 
-/* Show the hand cursor on every button, as Tailwind 4 no longer does it by default. */
+/* IBM Plex Sans Arabic: a clear, friendly font for Arabic and English. Only the Arabic and Latin letters are
+   loaded, in the three weights the app uses, so the files stay small and work offline. */
+@import "@fontsource/ibm-plex-sans-arabic/arabic-400.css";
+@import "@fontsource/ibm-plex-sans-arabic/latin-400.css";
+@import "@fontsource/ibm-plex-sans-arabic/arabic-500.css";
+@import "@fontsource/ibm-plex-sans-arabic/latin-500.css";
+@import "@fontsource/ibm-plex-sans-arabic/arabic-700.css";
+@import "@fontsource/ibm-plex-sans-arabic/latin-700.css";
+
+@theme {
+  --font-sans: "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+}
+
 @layer base {
+  /* Show the hand cursor on every button, as Tailwind 4 no longer does it by default. */
   button:not(:disabled) {
     cursor: pointer;
+  }
+
+  /* A soft teal ring around whatever the keyboard is on, the same everywhere. */
+  :focus-visible {
+    outline: 2px solid var(--color-teal-500);
+    outline-offset: 2px;
+  }
+}
+
+/* Pages fade in gently when you move between them (Layout gives each page this class). */
+.page-in {
+  animation: page-in 0.2s ease-out;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-in {
+    animation: none;
   }
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
-import { EmptyState, Loading, Money, PageHeader, TableCard, inputClass, numberClass, primaryButton, tdClass, thClass } from '../components/ui'
+import { EmptyState, Icon, Loading, Money, PageHeader, TableCard, inputClass, numberClass, primaryButton, rowClass, tdClass, thClass } from '../components/ui'
 import { useAppData } from '../hooks/useAppData'
 import { formatMoney, sumMoney } from '../lib/money'
 import { matchesPartSearch } from '../lib/search'
@@ -21,6 +21,7 @@ export default function InventoryPage() {
     <>
       <PageHeader title="المخزون">
         <Link to="/inventory/new" className={primaryButton}>
+          <Icon name="plus" className="h-4 w-4" />
           إضافة قطعة
         </Link>
       </PageHeader>
@@ -60,16 +61,16 @@ export default function InventoryPage() {
                 const low = part.minStock > 0 && partStock.quantity <= part.minStock
                 return (
                   // The whole row opens the part (notes, edit, delete); the name link keeps keyboard access.
-                  <tr key={part.id} className={`cursor-pointer ${partStock.quantity === 0 ? 'bg-red-100 hover:bg-red-200' : 'hover:bg-green-100'}`} onClick={() => navigate(`/inventory/${part.id}`)}>
+                  <tr key={part.id} className={partStock.quantity === 0 ? 'cursor-pointer bg-red-50 transition-colors hover:bg-red-100' : rowClass} onClick={() => navigate(`/inventory/${part.id}`)}>
                     <td className={tdClass}>
-                      <Link to={`/inventory/${part.id}`} className="font-medium text-slate-900 hover:underline">
+                      <Link to={`/inventory/${part.id}`} className="font-medium text-slate-900 hover:text-teal-700 hover:underline">
                         {part.name}
                       </Link>
                       {part.partNumber && <span className="block text-xs text-slate-500">{part.partNumber}</span>}
                     </td>
                     <td className={tdClass}>{part.vehicle}</td>
                     <td className={`${tdClass} ${numberClass}`}>
-                      {low && <span className="me-2 rounded bg-amber-100 px-1.5 py-0.5 text-xs text-amber-900">قليل</span>}
+                      {low && <span className="me-2 rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800">قليل</span>}
                       {partStock.quantity}
                     </td>
                     <td className={`${tdClass} ${numberClass}`}>{cost === null ? '—' : formatMoney(cost)}</td>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import MonthPicker from '../components/MonthPicker'
-import { EmptyState, Loading, Money, PageHeader, TableCard, inputClass, numberClass, primaryButton, secondaryButton, tdClass, thClass } from '../components/ui'
+import { EmptyState, Icon, Loading, Money, PageHeader, TableCard, inputClass, numberClass, primaryButton, secondaryButton, rowClass, tdClass, thClass } from '../components/ui'
 import { useAppData } from '../hooks/useAppData'
 import { newestFirst } from '../lib/dates'
 import { linesTotal } from '../lib/reports'
@@ -25,6 +25,7 @@ export default function SalesPage() {
     <>
       <PageHeader title="المبيعات">
         <Link to="/sales/new" className={primaryButton}>
+          <Icon name="plus" className="h-4 w-4" />
           بيع جديد
         </Link>
       </PageHeader>
@@ -69,7 +70,7 @@ export default function SalesPage() {
                 const cost = data.saleCosts.get(sale.id) ?? 0
                 return (
                   // The whole row opens the sale (its parts, edit, delete); the date link keeps keyboard access.
-                  <tr key={sale.id} className="cursor-pointer hover:bg-green-100" onClick={() => navigate(`/sales/${sale.id}`)}>
+                  <tr key={sale.id} className={rowClass} onClick={() => navigate(`/sales/${sale.id}`)}>
                     <td className={tdClass}>
                       <Link to={`/sales/${sale.id}`} className="font-medium hover:underline">
                         {sale.date}
