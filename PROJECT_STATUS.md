@@ -71,6 +71,9 @@ Key decisions (all implemented):
   public repo https://github.com/mohamadarabacc-glitch/auto-parts-manager, code on `main`, built site on `gh-pages`).
   To publish an update: `npm run build:pages`, then in `dist-pages/` commit and force-push to branch `gh-pages`.
   Each device keeps its own data; move it with Backup/Restore. Local git save points are made before each step ("back step").
+- **Look** (since 2026-10-28): IBM Plex Sans Arabic font (`@fontsource/ibm-plex-sans-arabic`, Arabic + Latin, weights
+  400/500/700, cached for offline), teal main colour, amber warnings, green profit / red loss. Shared styles and the
+  line icons (`Icon`) are in `src/components/ui.tsx`; on phones the menu is a 4 × 2 grid of icons.
 - **Excel export** (Backup page, "Download Excel file", added 2026-10-28) writes an .xlsx with sheets Parts, Sales,
   Repairs, Purchases, Expenses for reading only; it cannot be restored. No library: `src/lib/xlsx.ts` writes the
   file (XML + uncompressed zip), `src/lib/excelExport.ts` builds the rows. The JSON backup stays the only restore file.
@@ -182,6 +185,7 @@ Problems met:
 | 2026-10-28 | `npx vitest run src/lib/xlsx.test.ts`, `npm run build` (removed Part number and Condition columns from the Excel Parts sheet) | **Passed: 3 tests**; build OK |
 | 2026-10-28 | `npx vitest run`, `npm run build`, browser check of /, /purchases/new, /sales month list; Arabic sample file opened in Microsoft Excel (after translating the whole app to Arabic) | **Passed: 9 files, 132 tests**; build OK; pages right to left; Excel sheets open right to left with Arabic names |
 | 2026-10-28 | `npm run build:pages`, push to GitHub, open the live link | **Passed**: site live (HTTP 200), /reports opens in Arabic, service worker and manifest load from /auto-parts-manager/ |
+| 2026-10-28 | `npx vitest run`, `npm run build`, browser check on desktop and phone size, `npm run build:pages` and publish (new look) | **Passed: 9 files, 132 tests**; build OK; new version live on the GitHub link |
 
 Test counts per file: money 49, helpers (quantity, dates) 17, stock 13, reports 7, database actions 9,
 backup 5, app screens 13.
