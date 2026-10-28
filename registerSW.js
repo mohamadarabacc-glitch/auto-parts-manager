@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/auto-parts-manager/sw.js', { scope: '/auto-parts-manager/' })})}
