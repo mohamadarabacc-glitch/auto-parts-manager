@@ -1,0 +1,9 @@
+/* Only scan the app's own source files for Tailwind classes (not dist/, docs or node_modules). */
+@import "tailwindcss" source(".");
+
+/* Show the hand cursor on every button, as Tailwind 4 no longer does it by default. */
+@layer base {
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+}
