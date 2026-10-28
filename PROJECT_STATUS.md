@@ -187,6 +187,7 @@ Problems met:
 | 2026-10-28 | `npm run build:pages`, push to GitHub, open the live link | **Passed**: site live (HTTP 200), /reports opens in Arabic, service worker and manifest load from /auto-parts-manager/ |
 | 2026-10-28 | `npx vitest run`, `npm run build`, browser check on desktop and phone size, `npm run build:pages` and publish (new look) | **Passed: 9 files, 132 tests**; build OK; new version live on the GitHub link |
 | 2026-10-28 | `npx vitest run`, `npm run build:pages` and publish (new icon from the owner's photo, name Fayad) | **Passed: 9 files, 132 tests**; build OK; live manifest shows name Fayad and the new icons |
+| 2026-10-29 | Full scenario test: new `src/scenarios.test.tsx` (19 tests: wrong input, edit/delete, stock by date, two lines of one part, labour-only repair, Arabic category search, reports coupling example, backup reminder, restore/refuse a file, downloads); real-browser backup → restore round trip and Excel file; phone-size check | **Passed: 10 files, 151 tests**. Found and fixed 1 bug: negative amounts showed the minus at the end ("24.00-") in Arabic; now "-24.00" |
 
 Test counts per file: money 49, helpers (quantity, dates) 17, stock 13, reports 7, database actions 9,
 backup 5, app screens 13.

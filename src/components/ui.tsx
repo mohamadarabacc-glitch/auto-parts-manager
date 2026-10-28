@@ -63,10 +63,17 @@ export function TableCard({ children }: { children: ReactNode }) {
   )
 }
 
-/** A money amount; with `colored`, profit shows in green and losses in red. */
+/**
+ * A money amount; with `colored`, profit shows in green and losses in red.
+ * dir="ltr" keeps the minus sign in front ("-24.00"); in right-to-left Arabic text it would jump to the end.
+ */
 export function Money({ value, colored = false }: { value: Cents; colored?: boolean }) {
   const color = !colored || value === 0 ? undefined : value < 0 ? 'text-red-600' : 'text-emerald-700'
-  return <span className={color}>{formatMoney(value)}</span>
+  return (
+    <span dir="ltr" className={color}>
+      {formatMoney(value)}
+    </span>
+  )
 }
 
 const TONES = {

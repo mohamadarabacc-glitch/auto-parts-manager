@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { Link, useNavigate, useParams } from 'react-router'
 import PartLinesEditor, { draftTotal, readLines, toLineDrafts } from '../components/PartLinesEditor'
 import { confirmDelete, readMoney, useFormAction, withId } from '../components/form'
-import { Card, ErrorMessage, Field, Loading, NotFound, PageHeader, dangerButton, inputClass, primaryButton, secondaryButton } from '../components/ui'
+import { Card, ErrorMessage, Field, Loading, Money, NotFound, PageHeader, dangerButton, inputClass, primaryButton, secondaryButton } from '../components/ui'
 import { deleteRepair, saveRepair } from '../db/actions'
 import { useAppData, type LoadedData } from '../hooks/useAppData'
 import { today } from '../lib/dates'
@@ -102,7 +102,7 @@ function RepairForm({ data, repair }: { data: LoadedData; repair?: Repair }) {
             <p className="font-semibold">المجموع المطلوب من الزبون: {formatMoney(partsTotal + laborTotal)}</p>
             {repair && savedCost !== null && (
               <p className="text-sm text-slate-600">
-                حسب المحفوظ: كلفة القطع {formatMoney(savedCost)} · الربح الإجمالي {formatMoney(repairTotal(repair) - savedCost)}
+                حسب المحفوظ: كلفة القطع {formatMoney(savedCost)} · الربح الإجمالي <Money value={repairTotal(repair) - savedCost} colored />
               </p>
             )}
           </div>

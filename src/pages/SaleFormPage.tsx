@@ -2,7 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { Link, useNavigate, useParams } from 'react-router'
 import PartLinesEditor, { draftTotal, emptyLine, readLines, toLineDrafts } from '../components/PartLinesEditor'
 import { confirmDelete, useFormAction, withId } from '../components/form'
-import { Card, ErrorMessage, Field, Loading, NotFound, PageHeader, dangerButton, inputClass, primaryButton, secondaryButton } from '../components/ui'
+import { Card, ErrorMessage, Field, Loading, Money, NotFound, PageHeader, dangerButton, inputClass, primaryButton, secondaryButton } from '../components/ui'
 import { deleteSale, saveSale } from '../db/actions'
 import { useAppData, type LoadedData } from '../hooks/useAppData'
 import { today } from '../lib/dates'
@@ -81,7 +81,7 @@ function SaleForm({ data, sale }: { data: LoadedData; sale?: Sale }) {
           {sale && savedCost !== null && (
             <p className="mt-1 text-end text-sm text-slate-600 tabular-nums">
               حسب المحفوظ: كلفة القطع {formatMoney(savedCost)} · الربح الإجمالي{' '}
-              {formatMoney(linesTotal(sale.lines) - savedCost)}
+              <Money value={linesTotal(sale.lines) - savedCost} colored />
             </p>
           )}
         </Card>
